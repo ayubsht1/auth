@@ -5,6 +5,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib import messages
 from .models import CustomUser
 from .forms import CustomUserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Registration View
 class RegisterView(CreateView):
@@ -44,5 +45,5 @@ class CustomLogoutView(LogoutView):
         return super().dispatch(request, *args, **kwargs)
 
 
-class HomeView(TemplateView):
+class HomeView(LoginRequiredMixin, TemplateView):
     template_name = 'home.html'
