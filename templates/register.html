@@ -5,7 +5,7 @@
         <div class="col-md-6">
             <div class="card shadow">
                 <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">Create an Account</h4>
+                    <h4 class="mb-0 text-center">Create an Account</h4>
                 </div>
                 <div class="card-body">
                     <form method="post" novalidate>
@@ -23,6 +23,9 @@
                         {% endfor %}
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary">Register</button>
+                        </div>
+                        <div class="mt-3 text-center">
+                            <span>Already have an account? <a href="{% url 'login' %}">login</a></span>
                         </div>
                     </form>
                 </div>

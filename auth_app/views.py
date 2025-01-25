@@ -1,7 +1,9 @@
+from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, FormView
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth import logout
 from django.contrib import messages
 from .models import CustomUser
 from .forms import CustomUserCreationForm
@@ -43,6 +45,11 @@ class CustomLogoutView(LogoutView):
     def dispatch(self, request, *args, **kwargs):
         messages.info(request, "You have successfully logged out.")
         return super().dispatch(request, *args, **kwargs)
+    
+def logout_user(request):
+    logout(request)
+    messages.info(request, 'your session has ended.')
+    return redirect('login')
 
 
 class HomeView(LoginRequiredMixin, TemplateView):
