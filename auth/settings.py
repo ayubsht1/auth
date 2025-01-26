@@ -121,8 +121,19 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
+# for Auth
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'auth_app.CustomUser'
 LOGIN_URL= '/login/'  # Login page
 LOGIN_REDIRECT_URL = '/'  # Redirect after login
 LOGOUT_REDIRECT_URL = '/login/'  # Redirect after logout
+
+
+# for password reset
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.mailgun.org'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'postmaster@sandbox34b914c6b04b4f53951c1e59f5e54931.mailgun.org'  # Replace with your Gmail address
+EMAIL_HOST_PASSWORD = '62530b64ef09547bee604c3889bff6f7-9c3f0c68-2871285f'  # Replace with your Gmail password or app password
+DEFAULT_FROM_EMAIL = 'auth_app <postmaster@sandbox34b914c6b04b4f53951c1e59f5e54931.mailgun.org>'
