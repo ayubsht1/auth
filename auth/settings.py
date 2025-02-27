@@ -128,12 +128,13 @@ LOGIN_URL= '/login/'  # Login page
 LOGIN_REDIRECT_URL = '/'  # Redirect after login
 LOGOUT_REDIRECT_URL = '/login/'  # Redirect after logout
 
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
 # for password reset
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'your-new-email@gmail.com'  # Replace with your new Gmail address
-EMAIL_HOST_PASSWORD = 'your-password'  # Replace with your Gmail password
-DEFAULT_FROM_EMAIL = 'auth_app <your-new-email@gmail.com>'
+EMAIL_HOST_USER = os.getenv('EMAIL')  # Replace with your new Gmail address
+EMAIL_HOST_PASSWORD = os.getenv('PASSWORD')  # Replace with your Gmail password
